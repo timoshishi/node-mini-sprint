@@ -46,8 +46,18 @@ res.end();
 
   }
   // TODO: POST/CREATE
-  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "POST") {
-    //YOUR CODE HERE
+  else if ((req.url == '/add' || req.url == 'FILL ME IN') && req.method == "POST") {
+    res.writeHead(200, { ...headers })
+    let body = [];
+    req.on('data', (chunk) => {
+      body.push(chunk);
+    }).on('end', () => {
+      body = Buffer.concat(body).toString();
+      quotes.push(body)
+      console.log({quotes})
+      res.write('post received');
+      res.end()
+    });
   }
 
 //CATCH ALL ROUTE

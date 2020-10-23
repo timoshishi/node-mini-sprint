@@ -20,9 +20,23 @@ $(document).ready(function () {
   }
   getQuote();
 
-  function addQuote(quote){
-
-    //YOUR CODE HERE, Add a POST request
+  const addQuote = (quote) => {
+    console.log('adding')
+    let res =  fetch('http://localhost:3000/add', {
+     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'text/html'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'error', // manual, *follow, error
+    body: quote // body data type must match "Content-Type" header
+    }).then(res => console.log(res.text()))
 
   }
+
+
+
 });
