@@ -40,15 +40,18 @@ const handleRequest = function(req, res) {
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
 res.writeHead(200, {...headers})
     //YOUR CODE HERE
-const quote = quotes[getRandomInt(0,quotes.length)]
+const quote = quotes[getRandomInt(0 ,quotes.length)]
 res.write(quote);
 res.end();
 
   }
   // TODO: POST/CREATE
   else if ((req.url == '/add' || req.url == 'FILL ME IN') && req.method == "POST") {
+
     res.writeHead(200, { ...headers })
+
     let body = [];
+
     req.on('data', (chunk) => {
       body.push(chunk);
     }).on('end', () => {
@@ -58,6 +61,7 @@ res.end();
       res.write('post received');
       res.end()
     });
+
   }
 
 //CATCH ALL ROUTE
