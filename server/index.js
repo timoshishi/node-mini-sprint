@@ -37,12 +37,16 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: GET ONE
-  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "FILL ME IN") {
+  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
+res.writeHead(200, {...headers})
     //YOUR CODE HERE
+const quote = quotes[getRandomInt(0,quotes.length)]
+res.write(quote);
+res.end();
 
   }
   // TODO: POST/CREATE
-  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "FILL ME IN") {
+  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "POST") {
     //YOUR CODE HERE
   }
 
