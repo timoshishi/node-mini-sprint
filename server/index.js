@@ -37,11 +37,19 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: GET ONE
-  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
+  if ((req.url == '/quote' || req.url == '/quote') && req.method == "GET") {
 res.writeHead(200, {...headers})
     //YOUR CODE HERE
 const quote = quotes[getRandomInt(0 ,quotes.length)]
 res.write(quote);
+res.end();
+
+  }
+   else if ((req.url == '/all' || req.url == '/quote') && req.method == "GET") {
+res.writeHead(200, {...headers})
+    //YOUR CODE HERE
+
+res.write(JSON.stringify(quotes));
 res.end();
 
   }
@@ -63,6 +71,17 @@ res.end();
     });
 
   }
+//   else if ((req.url == `/delete/:${id}` || req.url == 'FILL ME IN') && req.method == "POST") {
+//     res.writeHead(200, { ...headers })
+
+
+//     const arr = req.url.split('/')
+//     const id = Number(arr[arr.length - 1])
+//     quotes.splice(id, 1)
+
+//     res.write(JSON.stringify(quotes));
+// res.end();
+//   }
 
 //CATCH ALL ROUTE
   else {
